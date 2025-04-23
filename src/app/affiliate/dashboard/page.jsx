@@ -1,8 +1,19 @@
-
-import React from 'react'
+'use client'
+import { userAppContaxt } from '@/app/contaxtData/userContaxtData';
+import React, { useContext, useEffect } from 'react'
 
 function page() {
  
+  const {globalUser} = useContext(userAppContaxt);
+
+useEffect(() => {
+  if(globalUser.user){
+
+      
+  }
+  //console.log('globalllllllllllllllllll',globalUser.user)
+
+}, [globalUser.user])
   return (
     <>
     

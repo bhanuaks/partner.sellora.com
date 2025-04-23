@@ -12,7 +12,7 @@ import Script from "next/script";
 // import '../../Style/css/my_order.css'
 // import '../../Style/css/rating.css'
 // import '../../Style/css/charts.min.css'
-
+import '../../../public/front/loader.css'
 
 export const generateMetadata = () => {
   return {
@@ -58,6 +58,7 @@ export default function RootLayout({ children }) {
         
         <HeaderFirst />
         <HeaderSecond />
+        <div className="loaderouter"><div className="loader"></div></div>
             {children}
         <Footer />
         {/* <Script src={`${baseUrl}front/assets/js/jquery.min.js`} />

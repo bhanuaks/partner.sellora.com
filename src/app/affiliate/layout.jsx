@@ -10,12 +10,13 @@ import Script from "next/script";
 import LoginHeader from './dashboard/DashboardComponents/LoginHeader';
 import LoginFooter from './dashboard/DashboardComponents/LoginFooter';
 import CommonHeader from './CommonHeader';
+import { UserAppProvider } from '../contaxtData/userContaxtData';
 // import '../../Style/css/bootstrap.min.css'
 // import '../../Style/css/intlTelInput.css'
 // import '../../Style/css/my_order.css'
 // import '../../Style/css/rating.css'
 // import '../../Style/css/charts.min.css'
-
+import '../../../public/front/loader.css'
 
 export const generateMetadata = () => {
   return {
@@ -54,11 +55,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body  className="index-five">
+      <UserAppProvider>
         <LoginHeader />
         <CommonHeader />
+        <div className="loaderouter"><div className="loader"></div></div>
             {children}
         
         <LoginFooter />
+        </UserAppProvider>
       </body>
     </html>
   );
