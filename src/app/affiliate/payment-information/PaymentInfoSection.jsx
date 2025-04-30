@@ -10,6 +10,7 @@ import intlTelInput from 'intl-tel-input';
 import { useRouter } from 'next/navigation';
 import FileUpload from '../my-profile/FileUpload'
 import Link from 'next/link';
+import { citizenshipList } from '@/Http/citizenList';
 
 function PaymentInfoSection() {
   
@@ -40,7 +41,8 @@ function PaymentInfoSection() {
         photo:'',
          
     })
-    const formRef = useRef(null);  
+    const formRef = useRef(null);
+    const [citizenship, setCitizenship] = useState([])  
       
     const handleFileChange = (event) => {
       const { name} = event.target;
@@ -80,9 +82,20 @@ function PaymentInfoSection() {
               ...prevData,
               [name]:value
           }))
+
+          if(name=='paypal_id'){ } else {
+            setErrors((preError)=>({
+              ...preError,
+              [name]:!value?`${capitalizeFirstLetter(name).replace('_', ' ').replace('_', ' ')} is required`:''
+          }))
+        }
   
                      
   
+      }
+
+      function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
       }
   
       const fetchUserData = (user_id) => {
@@ -206,6 +219,9 @@ function PaymentInfoSection() {
        
     },[globalUser.user])
   
+    useEffect(() => {
+        setCitizenship(citizenshipList)
+      },[])
   
   return (
     <div className="">
@@ -311,9 +327,11 @@ function PaymentInfoSection() {
                   onChange={(e)=>hendleInputs(e)}
                   >
                     <option value="">Select</option>
-                      <option value="United States">United States</option>
-                      <option value="Canada">Canada</option>
-                      <option value="India">India</option>
+                      {citizenship && citizenshipList.map((list, index) => {
+                      
+                                            return (
+                                            <option value={list}>{list}</option>
+                                            )})}
                   </select>
                   {errors.country && ( 
                       <div className='error_message'>{errors.country}</div>
@@ -328,7 +346,7 @@ function PaymentInfoSection() {
                 </div>
                 <div className="col-lg-8">
                 <input 
-                  type="text" 
+                  type="number" 
                   name='account_no'
                   onChange={(e)=>hendleInputs(e)}
                   value={userData.account_no} />
@@ -404,7 +422,8 @@ function PaymentInfoSection() {
                           Upload
                         </button>
                       </div>
-                              
+                      <span class="text-danger"><strong>Note:</strong> Allowed file types: .jpg, .png, .pdf. Maximum file size: 10MB.</span>
+                      <br></br>      
                       {userData.photo && typeof userData.photo ==="string" ?( 
                                       <a href={`${baseUrl}${userData.photo}`} target="_blank" style={{color:'#333383'}}>View Image</a>
                                       ):''}

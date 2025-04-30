@@ -10,6 +10,7 @@ import 'intl-tel-input/build/css/intlTelInput.css';
 import intlTelInput from 'intl-tel-input';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { citizenshipList } from '@/Http/citizenList';
 
 function MyProfileFromSection() {
   
@@ -42,6 +43,7 @@ function MyProfileFromSection() {
       tax_name:'EIN No.' 
   })
   const formRef = useRef(null);  
+  const [citizenship, setCitizenship] = useState([])
     
   const handleFileChange = (event) => {
     const { name} = event.target;
@@ -110,9 +112,20 @@ function MyProfileFromSection() {
             ...prevData,
             [name]:value
         }))
+        
+        if(name=='business_name'){ } else {
+        setErrors((preError)=>({
+          ...preError,
+          [name]:!value?`${capitalizeFirstLetter(name).replace('_', ' ')} is required`:''
+      }))
+    }
 
                    
 
+    }
+
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
     const fetchUserData = (user_id) => {
@@ -240,6 +253,10 @@ function MyProfileFromSection() {
   }
      
   },[globalUser.user])
+
+  useEffect(() => {
+    setCitizenship(citizenshipList)
+  },[])
   
   
   return (
@@ -352,10 +369,10 @@ function MyProfileFromSection() {
                   <div className="discount-type">
                     <label>
                       <input type="radio" name="sex" value="Male" onChange={(e)=>hendleInputs(e)} checked={userData.sex=='Male'?'checked':''}   />
-                      Male</label>
+                      &nbsp; Male</label>
                     <label>
                       <input type="radio" name="sex" value="Female" onChange={(e)=>hendleInputs(e)} checked={userData.sex=='Female'?'checked':''} />
-                      Female</label>
+                      &nbsp; Female</label>
                   </div>
                   {errors.sex && ( 
                                               <div className='error_message'>{errors.sex}</div>
@@ -392,9 +409,11 @@ function MyProfileFromSection() {
                   onChange={(e)=>hendleInputs(e)}
                   >
                     <option value="">Select</option>
-                      <option value="United States">United States</option>
-                      <option value="Canada">Canada</option>
-                      <option value="India">India</option>
+                      {citizenship && citizenshipList.map((list, index) => {
+
+                      return (
+                      <option value={list}>{list}</option>
+                      )})}
                   </select>
                   {errors.nationality && ( 
                       <div className='error_message'>{errors.nationality}</div>
@@ -496,6 +515,8 @@ function MyProfileFromSection() {
               Upload
             </button>
           </div>
+          <span class="text-danger"><strong>Note:</strong> Allowed file types: .jpg, .png, .pdf. Maximum file size: 10MB.</span>
+          <br></br>
                   
           {userData.photo && typeof userData.photo ==="string" ?( 
                           <a href={`${baseUrl}${userData.photo}`} target="_blank" style={{color:'#333383'}}>View Image</a>
@@ -504,6 +525,7 @@ function MyProfileFromSection() {
 {errors.photo && (
                             <span className="error_message">{errors.photo}</span>
                           )}
+                          
         </div>
       </div>
     </div>
@@ -649,6 +671,8 @@ function MyProfileFromSection() {
               Upload
             </button>
           </div>
+          <span class="text-danger"><strong>Note:</strong> Allowed file types: .jpg, .png. Maximum file size: 10MB.</span>
+          <br></br>
           {userData.photo_close && typeof userData.photo_close ==="string" ?( 
                           <a href={`${baseUrl}${userData.photo_close}`} target="_blank" style={{color:'#333383'}}>View Image</a>
                           ):''}
