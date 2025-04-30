@@ -7420,7 +7420,7 @@ Background Image
   background-size: cover;
   background-position: center center;
 }
-.bg_image--1 {
+/* .bg_image--1 {
   background-image: url(../images/bg/bg-image-1.html);
 }
 .bg_image--2 {
@@ -7540,6 +7540,7 @@ Background Image
 .bg_image--40 {
   background-image: url(../images/bg/bg-image-40.html);
 }
+  */
 /* Height and width */
 .fullscreen {
   min-height: 980px;
@@ -34145,8 +34146,9 @@ a.add_more_product_field {
 input[type="date"] {
   position: relative;
   background: transparent;
-  text-align: center;
+  /* text-align: center; */
   pointer-events: none;
+  border: 1px solid #9e9e9e !important;
 }
  input[type="date"]::-webkit-calendar-picker-indicator {
  opacity: 1;
@@ -34154,7 +34156,7 @@ input[type="date"] {
  pointer-events: auto;
 }
 input[type="date"]:focus {
-  outline: none;
+  /* outline: none; */
 }
 .edit_button {
   background: #ff6e35;
@@ -38185,7 +38187,23 @@ background: #f9f9f9;
   z-index: 10;
 }
 
+.profile_button {
+  color: #fff;
+    background: #06c;
+    border: 1px solid #06c;
+    border-radius: 4px;
+    padding: 15px 60px;
+    font-size: 16px;
+    font-weight: 600;
+}
 
+.form-group input[type="password"] 
+ {
+    border-radius: 4px;
+    width: 100%;
+    padding: 1px 8px;
+    border: 1px solid #9e9e9e !important;
+}
 
 
 

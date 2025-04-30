@@ -77,16 +77,16 @@ function Header() {
                   <i className="fa fa-chevron-down doted_l" />
                   <div className="dropdown mr_10_login">
                     <div className="affiliate-dashboard-profile">
-                      <a className="drop-link" href="/my-profile">
+                      <a className="drop-link" href="/associate/my-profile">
                         My Profile
                       </a>
-                      <a className="drop-link" href="/payment-information">
+                      <a className="drop-link" href="/associate/payment-information">
                         Payment Information
                       </a>
-                      <a className="drop-link" href="/my-payments">
+                      <a className="drop-link" href="/associate/my-payments">
                         My Payments
                       </a>
-                      <a className="drop-link" href="/change-password">
+                      <a className="drop-link" href="/associate/change-password">
                         Change password
                       </a>
                       <a
@@ -106,7 +106,7 @@ function Header() {
         <div className="col-lg-12">
           <div className="logo-search-category-wrapper after-md-device-header header-mid-five-call light-bg">
             {" "}
-            <a href="index.html" className="logo-area">
+            <a href="/" className="logo-area">
               {" "}
               <img
                 src={`${baseUrl}front/images/affiliate_logo.jpg`}

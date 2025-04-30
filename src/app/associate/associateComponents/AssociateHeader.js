@@ -27,10 +27,10 @@ function AssociateHeader() {
 
                       <div className="affiliate-dashboard-profile">
 
-                        <a className='drop-link' href='/my-profile'>My Profile</a>
-                        <a className='drop-link' href='/payment-information'>Payment Information</a>
-                        <a className='drop-link' href='/my-payments'>My Payments</a>
-                        <a className='drop-link' href='/change-password'>Change password</a>
+                        <a className='drop-link' href='/associate/my-profile'>My Profile</a>
+                        <a className='drop-link' href='/associate/payment-information'>Payment Information</a>
+                        <a className='drop-link' href='/associate/my-payments'>My Payments</a>
+                        <a className='drop-link' href='/associate/change-password'>Change password</a>
                         <a className='drop-link' href='#'>Logout</a>
                       </div>
                     </div>
@@ -50,10 +50,10 @@ function AssociateHeader() {
                     <i className="fa fa-chevron-down doted_l"></i>
                     <div className='dropdown mr_10_login'> 
                       <div className="affiliate-dashboard-profile">
-                        <a className='drop-link' href='/my-profile'>My Profile</a>
-                        <a className='drop-link' href='/payment-information'>Payment Information</a>
-                        <a className='drop-link' href='/my-payments'>My Payments</a>
-                        <a className='drop-link' href='/change-password'>Change password</a>
+                        <a className='drop-link' href='/associate/my-profile'>My Profile</a>
+                        <a className='drop-link' href='/associate/payment-information'>Payment Information</a>
+                        <a className='drop-link' href='/associate/my-payments'>My Payments</a>
+                        <a className='drop-link' href='/associate/change-password'>Change password</a>
                         <a className='drop-link' href='#'>Logout</a>
                       </div> 
                     </div>
