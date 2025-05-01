@@ -62,7 +62,7 @@ function page() {
               if(res.user.program == 1){
                 window.location.href=`${baseUrl}affiliate/dashboard`;
               } else {
-                window.location.href=`${baseUrl}associate/profit-summary`;
+                window.location.href=`${baseUrl}associate/account-information`;
               } 
             }, 300);
           }else if(res.data.status_code==403){
