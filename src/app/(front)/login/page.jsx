@@ -34,7 +34,39 @@ function page() {
                 [name]:value
               })) 
           }
+  const fetchUserDataAssociate = (user_id) => {
+        // console.log('userssss', user_id)      
+            //$('.loaderouter').css('display', 'flex') 
+              try{
+              fetch(`${baseUrl}api/associate-get-detail?user_id=${user_id}`,{
+                method:"GET"
+              }).then((response)=>{
+                return response.json();
+              }).then((res)=>{
+                if(res.status){
+                //console.log('okkkkkkkkk', res.data.user.store)
+                  
+                  if(res.data.user.store?.finish == 1){
+                    //setProfileShow(true);
+                    window.location.href=`${baseUrl}associate/profit-summary`;
+                  } else {
+                    window.location.href=`${baseUrl}associate/account-information`;
+                    
+                    //setProfileShow(false);
+                  }
   
+  
+                  //setWebsite(res.data.user[0])
+                  
+                }
+                //$('.loaderouter').css('display', 'none') 
+              })
+            } catch (error) {
+              //console.error('Error saving profile:', error);
+              //setMessage({ type: 'error', text: 'An unexpected error occurred.' });
+              //toast.error(`Error: ${error.message}`);
+            }
+            }
           
     function loginSubmit(e){
       setErrors({});
@@ -57,12 +89,17 @@ function page() {
           if(res.status){
             toast.success('Success! Login successfully.'); 
             sessionStorage.setItem('affiliateUserAuthToken', res.token) 
-            
+            //console.log('kkkkk', res.user)
             setTimeout(() => {  
               if(res.user.program == 1){
                 window.location.href=`${baseUrl}affiliate/dashboard`;
               } else {
-                window.location.href=`${baseUrl}associate/account-information`;
+                
+                
+                fetchUserDataAssociate(res.user._id)
+                
+                
+                //window.location.href=`${baseUrl}associate/account-information`;
               } 
             }, 300);
           }else if(res.data.status_code==403){

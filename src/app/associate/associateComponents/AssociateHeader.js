@@ -1,8 +1,71 @@
+'use client'
+import { userAppContaxt } from '@/app/contaxtData/userContaxtData';
 import { baseUrl } from '@/Http/helper'
 import Link from 'next/link'
-import React from 'react'
+import $ from 'jquery'
+import React, { useContext, useEffect, useState } from 'react'
+
+
 
 function AssociateHeader() {
+  
+  const {globalUser} = useContext(userAppContaxt);
+const [user, setUser] = useState({})
+
+
+
+useEffect(()=>{
+        
+  if(globalUser.user){ 
+  
+    $('.loaderouter').css('display', 'flex') 
+    try{
+    fetch(`${baseUrl}api/aff-user/user-detail?user_id=${globalUser.user._id}`,{
+      method:"GET"
+    }).then((response)=>{
+
+      if(!response.ok){
+        $('.loaderouter').css('display', 'none') 
+        //throw new Error("Network Error")
+      }
+      return response.json();
+    }).then((res)=>{
+      if(res.status){
+        //console.log(res.data.user)
+        setUser(res.data.user)
+      }
+      $('.loaderouter').css('display', 'none') 
+    })
+  } catch(error) {
+      
+  }
+}
+   
+},[globalUser.user])  
+  
+  function logoutUser(e){
+    e.preventDefault()
+     $('.loaderouter').css('display','flex')
+            fetch(`${baseUrl}api/aff-user-logout`,{
+                method:"POST", 
+                body:JSON.stringify({user_id:""})
+            }).then((response)=>{ 
+                if(!response.ok){
+                    $('.loaderouter').css('display','none')
+                    throw new Error("Network Error")
+                }
+                return response.json()
+            }).then((res)=>{
+                if(res.status){ 
+                    window.location.reload()
+                }else{ 
+                    $('.loaderouter').css('display','none')
+                }
+            })
+}
+  
+  
+  
   return (
     <div className="rts-header-one-area-one career-header light-bg">
     <div className="rts-header-nav-area-one header--sticky careerheader-sticky">
@@ -20,7 +83,7 @@ function AssociateHeader() {
                 </div>
 
                 <div className="dropdown_login">
-                  <li className="seller-login-profile black_text">Ayesha Ali &nbsp; &nbsp;<i
+                  <li className="seller-login-profile black_text"> {user.first_name} {user.last_name} &nbsp; &nbsp;<i
                       className='fa fa-user user_bg text-white'></i>
                     <i className="fa fa-chevron-down doted_l"></i>
                     <div className='dropdown mr_10_login'>
@@ -31,7 +94,7 @@ function AssociateHeader() {
                         <a className='drop-link' href='/associate/payment-information'>Payment Information</a>
                         <a className='drop-link' href='/associate/my-payments'>My Payments</a>
                         <a className='drop-link' href='/associate/change-password'>Change password</a>
-                        <a className='drop-link' href='#'>Logout</a>
+                        <a className='drop-link' href='#' onClick={logoutUser}>Logout</a>
                       </div>
                     </div>
                   </li>

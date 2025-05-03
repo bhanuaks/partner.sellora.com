@@ -6,6 +6,7 @@ import { baseUrl } from "@/Http/helper";
 import Script from "next/script";
 import AssociateHeader from './associateComponents/AssociateHeader';
 import AssociateFooter from './associateComponents/AssociateFooter';
+import { UserAppProvider } from '../contaxtData/userContaxtData';
  
  
 
@@ -46,10 +47,12 @@ export const generateMetadata = () => {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body  className="index-five"> 
+      <body  className="index-five">
+        <UserAppProvider> 
         <AssociateHeader />
           {children} 
           <AssociateFooter />
+          </UserAppProvider>
       </body>
     </html>
   );

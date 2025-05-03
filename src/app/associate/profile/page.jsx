@@ -1,10 +1,155 @@
-import React from "react";
+"use client";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import SideBare from "../SideBare";
+import { toast, ToastContainer } from "react-toastify";
+import "../../../../public/front/loader.css";
+import { userAppContaxt } from "@/app/contaxtData/userContaxtData";
+import $ from "jquery";
+import { baseUrl } from "@/Http/helper";
+import { useRouter } from "next/navigation";
 
 function page() {
+
+const {globalUser} = useContext(userAppContaxt);
+  const [user, setUser] = useState({});
+  const router = useRouter();
+  const [errors, setErrors] = useState({});
+  const [userData, setUserData] = useState({});
+  const fetchUserData = user_id => {
+    $(".loaderouter").css("display", "flex");
+    try {
+      fetch(`${baseUrl}api/associate-acc-store?user_id=${user_id}`, {
+        method: "GET"
+      })
+        .then(response => {
+          if (!response.ok) {
+            $(".loaderouter").css("display", "none");
+            //throw new Error("Network Error")
+          }
+          return response.json();
+        })
+        .then(res => {
+          if (res.status) {
+            //console.log(res.data.user)
+            setUserData(res.data.user);
+            //setCheckBoxVal(res.data.user.web_type)
+          }
+          $(".loaderouter").css("display", "none");
+        });
+    } catch (error) {
+      //console.error('Error saving profile:', error);
+      //setMessage({ type: 'error', text: 'An unexpected error occurred.' });
+      //toast.error(`Error: ${error.message}`);
+    }
+  };
+
+  const fetchUserDetail = (user_id) => {
+        //$('.loaderouter').css('display', 'flex') 
+        fetch(`${baseUrl}api/aff-user/user-detail?user_id=${user_id}`,{
+          method:"GET"
+        }).then((response)=>{
+    
+          if(!response.ok){
+            //$('.loaderouter').css('display', 'none') 
+            throw new Error("Network Error")
+          }
+          return response.json();
+        }).then((res)=>{
+          if(res.status){
+            //console.log(res.data.user)
+            setUser(res.data.user)
+          }
+          $('.loaderouter').css('display', 'none') 
+        })
+      }
+
+  useEffect(() => {
+        if (globalUser.user) {
+          //console.log(globalUser.user)
+          fetchUserData(globalUser.user._id);
+          fetchUserDetail(globalUser.user._id)
+
+        }
+      },
+      [globalUser.user]
+    );
+
+    const handleBack = (e) => {
+      e.preventDefault();
+      router.push("/associate/website-n-mobile-aap")
+    }
+
+    const handleFinish = async (e) => {
+      e.preventDefault();
+
+      const url = '/api/associate-store-finish';
+          const method = 'POST';
+          $('.loaderouter').css('display', 'flex')
+          const data = 
+            {
+               
+              id:userData._id
+      
+            }
+          
+          try {
+            const response = await fetch(url, {
+              method,
+              body: JSON.stringify(data),
+            });
+      
+            const result = await response.json();
+      
+            
+           //console.log(result)
+      
+            if (response.ok) {
+               
+               if(!result.success && result.data.status_code && result.data.status_code == 400){
+                 // setErrors(result.data.errors);
+                  $('.loaderouter').css('display', 'none');
+                  return
+               }
+      
+              
+              
+              $('.loaderouter').css('display', 'none')
+              // unselect all selected values
+      
+              router.push("/associate/profit-summary")
+      
+              
+              
+      
+            } else {
+              $('.loaderouter').css('display', 'none')
+              //setMessage({ type: 'error', text: result.message || 'Failed to save account information.' });
+              //toast.error(result.message);
+            }
+          } catch (error) {
+            //console.error('Error saving account information:', error);
+            //setMessage({ type: 'error', text: 'An unexpected error occurred.' });
+            //toast.error(`Error: ${error.message}`);
+          }
+    }
+
   return (
     <>
-      <div className="pull-right position_absolute">Store:sellera04-21</div>
+      <div className="pull-right position_absolute">Store:{userData.store_id}</div>
+      
+      <ToastContainer 
+                                  position="top-center"
+                                  autoClose={3000}  
+                                  hideProgressBar={false}
+                                  newestOnTop={false}
+                                  closeOnClick
+                                  rtl={false}
+                                  pauseOnFocusLoss
+                                  draggable
+                                  pauseOnHover
+                                  theme="colored"
+                              />
+                              <div className="loaderouter"><div className="loader"></div></div>
       <div className="">
         <div className="container">
           <div className="row">
@@ -21,11 +166,11 @@ function page() {
                     <div className="row">
                       <div className="col-lg-8 offset-lg-2">
                         <div className="text-center websit_heading">
-                          Congrats, Ayesha Ali
+                          Congrats, {user.first_name} {user.last_name}
                           <p>
                             Thank you for applying to the Sellora Associates
                             Program Your unique Associate ID is{" "}
-                            <span>sellera04-21.</span> Keep this ID secure, as
+                            <span>{userData.store_id}</span> Keep this ID secure, as
                             you may need it to verify your account.
                           </p>
                         </div>
@@ -61,10 +206,10 @@ function page() {
                     <div className="button_outer">
                       <ul>
                         <li className="tranasparent_bg">
-                          <a href="#">Previous</a>
-                        </li>
+                          <a href="#" onClick={handleBack}>Previous</a>
+                        </li> &nbsp;
                         <li>
-                          <a href="#">Finish</a>
+                          <a href="#" onClick={handleFinish}>Finish</a>
                         </li>
                       </ul>
                     </div>
