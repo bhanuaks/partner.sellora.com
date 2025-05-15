@@ -42,7 +42,7 @@ export async function POST(req) {
 
         if(isEmpty(first_name))errors.first_name = `First name is required.`
         if(isEmpty(last_name))errors.last_name = `Last name is required.`
-        if(isEmpty(mobile))errors.mobile = `Mobile number is required.`
+        if(!mobile)errors.mobile = `Mobile number is required.`
         if(isEmpty(sex))errors.sex = `Sex is required.`
         if(isEmpty(birth_date))errors.birth_date = `Date of birth is required.`
         if(isEmpty(nationality))errors.nationality = `Nationality is required.`
@@ -62,10 +62,10 @@ export async function POST(req) {
             exitBanner = await AffiliateUserModal.findById(id);
             
          if(exitBanner.photo){ } else {   
-          if(isEmpty(photo))errors.photo = `Attach document is required.`
+          if(!photo)errors.photo = `Attach document is required.`
          }
          if(exitBanner.photo_close){ } else {
-         if(isEmpty(photo_close))errors.photo_close = `Close up photo is required.`
+         if(!photo_close)errors.photo_close = `Close up photo is required.`
          }
         }
         

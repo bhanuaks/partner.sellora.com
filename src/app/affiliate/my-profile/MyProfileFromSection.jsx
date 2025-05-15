@@ -306,7 +306,7 @@ function MyProfileFromSection() {
                   placeholder="Last Name" 
                   name='last_name'
                   onChange={(e)=>hendleInputs(e)}
-                  value={userData.last_name} 
+                  value={userData.last_name || ""} 
                   
                   />
                   {errors.last_name && ( 
@@ -350,7 +350,7 @@ function MyProfileFromSection() {
                                       //onChange={(e)=>hendleInputs(e)}
                                       //disabled={sendOtp != 0?true:false}
                                       ref={phoneInputRef}
-                                      value={userData.mobile}
+                                      value={userData.mobile || ""}
                                       onChange={(e)=>hendleInputs(e)}
                                     />
                                     {errors.mobile && ( 
@@ -390,7 +390,7 @@ function MyProfileFromSection() {
                   type="date"           
                   name='birth_date'
                   onChange={(e)=>hendleInputs(e)} 
-                  value={formatDate(userData.birth_date)} />
+                  value={formatDate(userData.birth_date) || ""} />
                   {errors.birth_date && ( 
                       <div className='error_message'>{errors.birth_date}</div>
                   )}
@@ -405,14 +405,14 @@ function MyProfileFromSection() {
                 <div className="col-lg-8">
                   <select 
                   name="nationality" 
-                  value={userData.nationality}
+                  value={userData.nationality || ""}
                   onChange={(e)=>hendleInputs(e)}
                   >
                     <option value="">Select</option>
                       {citizenship && citizenshipList.map((list, index) => {
 
                       return (
-                      <option value={list}>{list}</option>
+                      <option value={list} key={index}>{list}</option>
                       )})}
                   </select>
                   {errors.nationality && ( 
@@ -435,7 +435,7 @@ function MyProfileFromSection() {
                   <input type="text" 
                   name='business_name'
                   onChange={(e)=>hendleInputs(e)} 
-                  value={userData.business_name} />
+                  value={userData.business_name || ""} />
                   {errors.business_name && ( 
                       <div className='error_message'>{errors.business_name}</div>
                   )}
@@ -453,7 +453,7 @@ function MyProfileFromSection() {
                   type="text" 
                   name='tax_id'
                   onChange={(e)=>hendleInputs(e)} 
-                  value={userData.tax_id} />
+                  value={userData.tax_id || ""} />
                   {errors.tax_id && ( 
                       <div className='error_message'>{errors.tax_id}</div>
                   )}
@@ -467,7 +467,7 @@ function MyProfileFromSection() {
                   <select style={{borderRadius: '0px 6px 6px 0px !important'}}
                   name='tax_name'
                   onChange={(e)=>hendleInputs(e)} 
-                  value={userData.tax_name}
+                  value={userData.tax_name || ""}
                   >
                     
                     <option value="EIN No.">EIN No.</option>
@@ -515,7 +515,7 @@ function MyProfileFromSection() {
               Upload
             </button>
           </div>
-          <span class="text-danger"><strong>Note:</strong> Allowed file types: .jpg, .png, .pdf. Maximum file size: 10MB.</span>
+          <span className="text-danger"><strong>Note:</strong> Allowed file types: .jpg, .png, .pdf. Maximum file size: 10MB.</span>
           <br></br>
                   
           {userData.photo && typeof userData.photo ==="string" ?( 
@@ -544,7 +544,7 @@ function MyProfileFromSection() {
                     type="text" 
                     name='education'
                   onChange={(e)=>hendleInputs(e)} 
-                  value={userData.education} />
+                  value={userData.education || ""} />
                   {errors.education && ( 
                       <div className='error_message'>{errors.education}</div>
                   )}
@@ -566,7 +566,7 @@ function MyProfileFromSection() {
                     type="text" 
                     name='emp_status'
                   onChange={(e)=>hendleInputs(e)} 
-                  value={userData.emp_status} />
+                  value={userData.emp_status || ""} />
                   {errors.emp_status && ( 
                       <div className='error_message'>{errors.emp_status}</div>
                   )}
@@ -588,7 +588,7 @@ function MyProfileFromSection() {
                     type="text" 
                     name='household_income'
                   onChange={(e)=>hendleInputs(e)} 
-                  value={userData.household_income} />
+                  value={userData.household_income || ""} />
                   {errors.household_income && ( 
                       <div className='error_message'>{errors.household_income}</div>
                   )}
@@ -609,7 +609,7 @@ function MyProfileFromSection() {
                     type="text" 
                     name='language'
                     onChange={(e)=>hendleInputs(e)} 
-                    value={userData.language} />
+                    value={userData.language || ""} />
                     {errors.language && ( 
                         <div className='error_message'>{errors.language}</div>
                     )}
@@ -671,7 +671,7 @@ function MyProfileFromSection() {
               Upload
             </button>
           </div>
-          <span class="text-danger"><strong>Note:</strong> Allowed file types: .jpg, .png. Maximum file size: 10MB.</span>
+          <span className="text-danger"><strong>Note:</strong> Allowed file types: .jpg, .png. Maximum file size: 10MB.</span>
           <br></br>
           {userData.photo_close && typeof userData.photo_close ==="string" ?( 
                           <a href={`${baseUrl}${userData.photo_close}`} target="_blank" style={{color:'#333383'}}>View Image</a>

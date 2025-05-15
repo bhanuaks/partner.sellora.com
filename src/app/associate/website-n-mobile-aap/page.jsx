@@ -223,7 +223,7 @@ function page() {
                             
                             name='store_id'
                             onChange={(e)=>hendleInputs(e)}
-                            value={userData.store_id} />
+                            value={userData.store_id || ""} />
                             {errors.store_id && ( 
                                               <div className='error_message'>{errors.store_id}</div>
                                           )}
@@ -241,7 +241,7 @@ function page() {
                           <div className="col-lg-8">
                             <input type="text" name='web_about'
                             onChange={(e)=>hendleInputs(e)}
-                            value={userData.web_about} />
+                            value={userData.web_about || ""} />
                             {errors.web_about && ( 
                                               <div className='error_message'>{errors.web_about}</div>
                                           )}

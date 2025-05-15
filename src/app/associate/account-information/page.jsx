@@ -208,8 +208,7 @@ function page() {
           })
         } catch (error) {
           console.error('Error saving profile:', error);
-          //setMessage({ type: 'error', text: 'An unexpected error occurred.' });
-          //toast.error(`Error: ${error.message}`);
+         
         }
         }
 
@@ -310,14 +309,10 @@ function page() {
                             
                             {website.map((websiteList, index) => {
                               return (
-                                <>
-
-                                
+                                <> 
                                 <div style={{ display: 'ruby' }} key={`webb${index}`}>
                                 <div className="select_values break_next" key={`web${index}`}>{websiteList} <span  onClick={(e) => removeButton(e, websiteList)}><i className="fa fa-trash"></i></span></div>
-                                </div>
-                                
-                                
+                                </div>  
                                 
                             </>
                               )
@@ -342,7 +337,7 @@ function page() {
                             </label>
                           </div>
                           <div className="col-lg-6 col-10">
-                            <input type="url" name="mobile" id="mobile" value={userData.mobile}  onChange={handleChange} required />
+                            <input type="url" name="mobile" id="mobile" value={userData.mobile || ""}  onChange={handleChange} required />
                             {errors.mobileApp && ( 
                                               <div className='error_message'>{errors.mobileApp}</div>
                                           )}
@@ -387,7 +382,7 @@ function page() {
                             </label>
                           </div>
                           <div className="col-lg-6 col-10">
-                            <input type="url" name="social" id="social" value={userData.social}  onChange={handleChange} required />
+                            <input type="url" name="social" id="social" value={userData.social || ""}  onChange={handleChange} required />
                             {errors.socialMedia && ( 
                                               <div className='error_message'>{errors.socialMedia}</div>
                                           )}

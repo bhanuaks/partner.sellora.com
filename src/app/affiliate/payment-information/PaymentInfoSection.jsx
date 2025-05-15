@@ -255,7 +255,7 @@ function PaymentInfoSection() {
                   type="text" 
                   name='acc_holder_name'
                   onChange={(e)=>hendleInputs(e)}
-                  value={userData.acc_holder_name} />
+                  value={userData.acc_holder_name || ""} />
                   {errors.acc_holder_name && ( 
                                               <div className='error_message'>{errors.acc_holder_name}</div>
                                           )}
@@ -272,7 +272,7 @@ function PaymentInfoSection() {
                   type="text" 
                   name='address'
                   onChange={(e)=>hendleInputs(e)}
-                  value={userData.address} />
+                  value={userData.address || "" } />
                   {errors.address && ( 
                                               <div className='error_message'>{errors.address}</div>
                                           )}
@@ -290,7 +290,7 @@ function PaymentInfoSection() {
                   type="text" 
                   name='city'
                   onChange={(e)=>hendleInputs(e)}
-                  value={userData.city} />
+                  value={userData.city || "" } />
                   {errors.city && ( 
                                               <div className='error_message'>{errors.city}</div>
                                           )}
@@ -308,7 +308,7 @@ function PaymentInfoSection() {
                   type="number" 
                   name='pin_code'
                   onChange={(e)=>hendleInputs(e)}
-                  value={userData.pin_code} />
+                  value={userData.pin_code || "" } />
                   {errors.pin_code && ( 
                                               <div className='error_message'>{errors.pin_code}</div>
                                           )}
@@ -323,7 +323,7 @@ function PaymentInfoSection() {
                 <div className="col-lg-8">
                 <select 
                   name="country" 
-                  value={userData.country}
+                  value={userData.country || ""}
                   onChange={(e)=>hendleInputs(e)}
                   >
                     <option value="">Select</option>
@@ -349,10 +349,10 @@ function PaymentInfoSection() {
                   type="number" 
                   name='account_no'
                   onChange={(e)=>hendleInputs(e)}
-                  value={userData.account_no} />
+                  value={userData.account_no || ""} />
                   {errors.account_no && ( 
-                                              <div className='error_message'>{errors.account_no}</div>
-                                          )}
+                      <div className='error_message'>{errors.account_no}</div>
+                  )}
                 </div>
 
               </div>
@@ -367,7 +367,7 @@ function PaymentInfoSection() {
                   type="text" 
                   name='ifsc_no'
                   onChange={(e)=>hendleInputs(e)}
-                  value={userData.ifsc_no} />
+                  value={userData.ifsc_no || ""} />
                   {errors.ifsc_no && ( 
                                               <div className='error_message'>{errors.ifsc_no}</div>
                                           )}
@@ -384,7 +384,7 @@ function PaymentInfoSection() {
                   type="text" 
                   name='paypal_id'
                   onChange={(e)=>hendleInputs(e)}
-                  value={userData.paypal_id} />
+                  value={userData.paypal_id || ""} />
                   {errors.paypal_id && ( 
                                               <div className='error_message'>{errors.paypal_id}</div>
                                           )}
