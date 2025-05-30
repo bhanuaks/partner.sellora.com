@@ -1,6 +1,8 @@
 'use client'
 import { userAppContaxt } from '@/app/contaxtData/userContaxtData';
 import React, { useContext, useEffect } from 'react'
+import SupplierInvite from './supplierInvite';
+import CheckGSTRegistered from './CheckGSTRegistered';
 
 function page() {
  
@@ -68,33 +70,8 @@ useEffect(() => {
               </div>
             </div>
           </div>
-          <div className="col-lg-4">
-            <div className="form_outer_23458">
-              <h3>Check if EIN/GSTIN is registered on Sellora</h3>
-              <div className="registration_form_single-input">
-                <input type="text" placeholder="Enter EIN/GSTIN" />
-              </div>
-              <div className="registration_form_single-input">
-                <input type="text" placeholder="Enter Email Id" />
-              </div>
-              <button className="save">Submit</button>
-            </div>
-          </div>
-          <div className="col-lg-4">
-            <div className="form_outer_23458">
-              <h3>Invite supplier to Sellora</h3>
-              <div className="registration_form_single-input">
-                <input type="text" placeholder="First Name" />
-              </div>
-              <div className="registration_form_single-input">
-                <input type="text" placeholder="Mobile Number" />
-              </div>
-              <div className="registration_form_single-input">
-                <input type="text" placeholder="Email Id" />
-              </div>
-              <button className="save">Send Invite</button>
-            </div>
-          </div>
+          <CheckGSTRegistered />
+        <SupplierInvite />
         </div>
       </div>
     </div>

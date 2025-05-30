@@ -248,7 +248,7 @@ function PaymentInfoSection() {
             <div className="form-group">
               <div className="row align-items-center">
                 <div className="col-lg-4">
-                  <label htmlFor="sku">Account Holder Name<span className='error_message'>*</span> : </label>
+                  <label htmlFor="sku">Account Holder Name<span className='errors_message'>*</span> : </label>
                 </div>
                 <div className="col-lg-8">
                 <input 
@@ -257,7 +257,7 @@ function PaymentInfoSection() {
                   onChange={(e)=>hendleInputs(e)}
                   value={userData.acc_holder_name || ""} />
                   {errors.acc_holder_name && ( 
-                                              <div className='error_message'>{errors.acc_holder_name}</div>
+                                              <div className='errors_message'>{errors.acc_holder_name}</div>
                                           )}
                 </div> 
               </div>
@@ -265,7 +265,7 @@ function PaymentInfoSection() {
             <div className="form-group">
               <div className="row align-items-center">
                 <div className="col-lg-4">
-                  <label htmlFor="sale-price">Address<span className='error_message'>*</span> :</label>
+                  <label htmlFor="sale-price">Address<span className='errors_message'>*</span> :</label>
                 </div>
                 <div className="col-lg-8">
                 <input 
@@ -274,7 +274,7 @@ function PaymentInfoSection() {
                   onChange={(e)=>hendleInputs(e)}
                   value={userData.address || "" } />
                   {errors.address && ( 
-                                              <div className='error_message'>{errors.address}</div>
+                                              <div className='errors_message'>{errors.address}</div>
                                           )}
                 </div>
               </div>
@@ -282,7 +282,7 @@ function PaymentInfoSection() {
             <div className="form-group">
               <div className="row align-items-center">
                 <div className="col-lg-4">
-                  <label htmlFor="msrp">City<span className='error_message'>*</span> :</label>
+                  <label htmlFor="msrp">City<span className='errors_message'>*</span> :</label>
                 </div>
                 <div className="col-lg-8">
 
@@ -292,7 +292,7 @@ function PaymentInfoSection() {
                   onChange={(e)=>hendleInputs(e)}
                   value={userData.city || "" } />
                   {errors.city && ( 
-                                              <div className='error_message'>{errors.city}</div>
+                                              <div className='errors_message'>{errors.city}</div>
                                           )}
 
                 </div>
@@ -301,7 +301,7 @@ function PaymentInfoSection() {
             <div className="form-group">
               <div className="row align-items-center">
                 <div className="col-lg-4">
-                  <label>PIN Code<span className='error_message'>*</span> :</label>
+                  <label>PIN Code<span className='errors_message'>*</span> :</label>
                 </div>
                 <div className="col-lg-8">
                 <input 
@@ -310,7 +310,7 @@ function PaymentInfoSection() {
                   onChange={(e)=>hendleInputs(e)}
                   value={userData.pin_code || "" } />
                   {errors.pin_code && ( 
-                                              <div className='error_message'>{errors.pin_code}</div>
+                                              <div className='errors_message'>{errors.pin_code}</div>
                                           )}
                 </div>
               </div>
@@ -318,7 +318,7 @@ function PaymentInfoSection() {
             <div className="form-group">
               <div className="row align-items-center">
                 <div className="col-lg-4">
-                  <label htmlFor="listing-status">Country<span className='error_message'>*</span> :</label>
+                  <label htmlFor="listing-status">Country<span className='errors_message'>*</span> :</label>
                 </div>
                 <div className="col-lg-8">
                 <select 
@@ -334,7 +334,7 @@ function PaymentInfoSection() {
                                             )})}
                   </select>
                   {errors.country && ( 
-                      <div className='error_message'>{errors.country}</div>
+                      <div className='errors_message'>{errors.country}</div>
                   )}
                 </div>
               </div>
@@ -342,7 +342,7 @@ function PaymentInfoSection() {
             <div className="form-group">
               <div className="row align-items-center">
                 <div className="col-lg-4">
-                  <label htmlFor="listing-status">Bank A/C Number<span className='error_message'>*</span> :</label>
+                  <label htmlFor="listing-status">Bank A/C Number<span className='errors_message'>*</span> :</label>
                 </div>
                 <div className="col-lg-8">
                 <input 
@@ -351,7 +351,7 @@ function PaymentInfoSection() {
                   onChange={(e)=>hendleInputs(e)}
                   value={userData.account_no || ""} />
                   {errors.account_no && ( 
-                      <div className='error_message'>{errors.account_no}</div>
+                      <div className='errors_message'>{errors.account_no}</div>
                   )}
                 </div>
 
@@ -360,7 +360,7 @@ function PaymentInfoSection() {
             <div className="form-group">
               <div className="row align-items-center">
                 <div className="col-lg-4">
-                  <label htmlFor="listing-status">IFSC Number<span className='error_message'>*</span> :</label>
+                  <label htmlFor="listing-status">IFSC Number<span className='errors_message'>*</span> :</label>
                 </div>
                 <div className="col-lg-8">
                 <input 
@@ -369,7 +369,7 @@ function PaymentInfoSection() {
                   onChange={(e)=>hendleInputs(e)}
                   value={userData.ifsc_no || ""} />
                   {errors.ifsc_no && ( 
-                                              <div className='error_message'>{errors.ifsc_no}</div>
+                                              <div className='errors_message'>{errors.ifsc_no}</div>
                                           )}
                 </div>
               </div>
@@ -386,7 +386,7 @@ function PaymentInfoSection() {
                   onChange={(e)=>hendleInputs(e)}
                   value={userData.paypal_id || ""} />
                   {errors.paypal_id && ( 
-                                              <div className='error_message'>{errors.paypal_id}</div>
+                                              <div className='errors_message'>{errors.paypal_id}</div>
                                           )}
                 </div>
               </div>
@@ -395,7 +395,7 @@ function PaymentInfoSection() {
             <div className="form-group">
                   <div className="row align-items-center">
                     <div className="col-lg-4">
-                      <label htmlFor="listing-status">Bank Statement<span className='error_message'>*</span> :</label>
+                      <label htmlFor="listing-status">Bank Statement<span className='errors_message'>*</span> :</label>
                     </div>
                     <div className="col-lg-8">
                       <div className="form-group">
@@ -429,7 +429,7 @@ function PaymentInfoSection() {
                                       ):''}
             
             {errors.photo && (
-                                        <span className="error_message">{errors.photo}</span>
+                                        <span className="errors_message">{errors.photo}</span>
                                       )}
                     </div>
                   </div>

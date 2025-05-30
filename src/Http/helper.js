@@ -104,7 +104,11 @@ export function getPricingLabel(price) {
 
 export const isEmpty = (value) => !value || value.trim() === '';
 
- 
+ export function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
 export function getUSFormatAmount(amount){ 
   const formattedAmount = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
   return formattedAmount
@@ -378,3 +382,13 @@ export function getBasePrice(amountIncludingGST, tax){
         return (priceAmount - discount) 
       } 
   }
+
+
+  export function generateUniqueId(length = 20) {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}

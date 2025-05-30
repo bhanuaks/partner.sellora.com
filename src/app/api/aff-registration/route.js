@@ -1,4 +1,4 @@
-import { encryptText, isEmpty, responseFun } from "@/Http/helper";
+import { encryptText, generateUniqueId, isEmpty, responseFun } from "@/Http/helper";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken"; 
 import { NextResponse } from "next/server";
@@ -61,9 +61,10 @@ export async function POST(request) {
         }
 
         
+   
 
         const hash_password = bcrypt.hashSync(password, parseInt(process.env.BCRYPT_SALT))
-        
+        const uniqueId = await getNewUniqueId(30);
 
             const user = await AffiliateUserModal.create({
                 first_name,
@@ -74,7 +75,8 @@ export async function POST(request) {
                 mobile,
                 mobile_code,
                 country_s_name,
-                program
+                program,
+                uniqueId
                 
             })
          
@@ -96,3 +98,12 @@ export async function POST(request) {
     }
 
 }
+
+    export async function getNewUniqueId(number=30){
+            const newId = generateUniqueId(number);
+            const checkExit = await AffiliateUserModal.countDocuments({uniqueId:newId})
+            if(checkExit>0){
+                   await getNewUniqueId()
+            }
+            return newId;
+        }

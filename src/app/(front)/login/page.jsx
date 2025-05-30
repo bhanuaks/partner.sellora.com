@@ -8,6 +8,7 @@ import $ from 'jquery'
 function page() {
           const [showPassword, setShowPassword] = useState(false)
           const [errors, setErrors] = useState({})
+          const [isLoading, setIsLoading] = useState(false)
           const route = useRouter(); 
           const [loginData, setLoginData] = useState({
             username:'',
@@ -35,31 +36,27 @@ function page() {
               })) 
           }
   const fetchUserDataAssociate = (user_id) => {
-        // console.log('userssss', user_id)      
-            //$('.loaderouter').css('display', 'flex') 
+      
               try{
               fetch(`${baseUrl}api/associate-get-detail?user_id=${user_id}`,{
                 method:"GET"
               }).then((response)=>{
                 return response.json();
               }).then((res)=>{
-                if(res.status){
-                //console.log('okkkkkkkkk', res.data.user.store)
-                  
+                if(res.status){ 
                   if(res.data.user.store?.finish == 1){
-                    //setProfileShow(true);
+                    
                     window.location.href=`${baseUrl}associate/profit-summary`;
                   } else {
                     window.location.href=`${baseUrl}associate/account-information`;
-                    
-                    //setProfileShow(false);
+                   
                   }
   
   
-                  //setWebsite(res.data.user[0])
+                  
                   
                 }
-                //$('.loaderouter').css('display', 'none') 
+                 
               })
             } catch (error) {
               //console.error('Error saving profile:', error);
@@ -71,7 +68,7 @@ function page() {
     function loginSubmit(e){
       setErrors({});
       e.preventDefault();
-      $('.loaderouter').css('display','flex')
+      setIsLoading(true);
         fetch(`${baseUrl}api/aff-user-login`,{
           method:"POST",
           headers:{
@@ -80,26 +77,20 @@ function page() {
           body:JSON.stringify(loginData)
         }).then((response)=>{ 
           if(!response.ok){
-          $('.loaderouter').css('display','none') 
+         setIsLoading(false);
             throw new Error("Network Error")
           }
           return response.json()
         }).then((res)=>{
-          $('.loaderouter').css('display','none')  
+          setIsLoading(false);
           if(res.status){
             toast.success('Success! Login successfully.'); 
-            sessionStorage.setItem('affiliateUserAuthToken', res.token) 
-            //console.log('kkkkk', res.user)
+            sessionStorage.setItem('affiliateUserAuthToken', res.token)  
             setTimeout(() => {  
               if(res.user.program == 1){
                 window.location.href=`${baseUrl}affiliate/dashboard`;
-              } else {
-                
-                
-                fetchUserDataAssociate(res.user._id)
-                
-                
-                //window.location.href=`${baseUrl}associate/account-information`;
+              } else { 
+                fetchUserDataAssociate(res.user._id) 
               } 
             }, 300);
           }else if(res.data.status_code==403){
@@ -203,7 +194,7 @@ function page() {
                         </div>
                       </div>
                     </div>
-                    <button className="rts-btn btn-primary">Login</button>
+                    <button className="rts-btn btn-primary" disabled={isLoading} >{isLoading?"Please wait..":"Login"}</button>
                   </form>
                 </div>
               </div>

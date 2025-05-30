@@ -33763,6 +33763,7 @@ td .check-bg .checkbox {
 .error_message {
   color: red;
   font-size: 14px;
+  float: left;
 }
 .return_table tr td:first-child {
   border-left: none !important;

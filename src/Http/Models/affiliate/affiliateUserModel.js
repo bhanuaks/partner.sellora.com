@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'; 
 
 const { Schema } = mongoose; 
 
@@ -12,6 +12,12 @@ const userSchema = new Schema({
     last_name:{
         type:String,
         required:[true, "Last name is required"]
+    },
+
+     uniqueId:{
+        type:String,
+        unique:true,
+        required:[true, "Unique Id is required"]
     },
     
     email:{
@@ -54,57 +60,59 @@ const userSchema = new Schema({
         required:[true, "Program is required"]
     },
     sex:{
-        type:String,  // 1=>sellora affiliate program, 2=> sellora associate program
+        type:String,  
        
     },
     birth_date:{
-        type:Date,  // 1=>sellora affiliate program, 2=> sellora associate program
+        type:Date,  
        
     },
     nationality:{
-        type:String,  // 1=>sellora affiliate program, 2=> sellora associate program
+        type:String, 
        
     },
     business_name:{
-        type:String,  // 1=>sellora affiliate program, 2=> sellora associate program
+        type:String,  
        
     },
     tax_id:{
-        type:String,  // 1=>sellora affiliate program, 2=> sellora associate program
+        type:String, 
        
     },
     education:{
-        type:String,  // 1=>sellora affiliate program, 2=> sellora associate program
+        type:String,  
        
     },
     emp_status:{
-        type:String,  // 1=>sellora affiliate program, 2=> sellora associate program
+        type:String,  
        
     },
     household_income:{
-        type:String,  // 1=>sellora affiliate program, 2=> sellora associate program
+        type:String,  
        
     },
     language:{
-        type:String,  // 1=>sellora affiliate program, 2=> sellora associate program
+        type:String,  
        
     },
     contact_lense:{
-        type:String,  // 1=>sellora affiliate program, 2=> sellora associate program
+        type:String,  
        
     },
     tax_name:{
-        type:String,  // 1=>sellora affiliate program, 2=> sellora associate program
+        type:String,  
        
     },
     photo:{
-        type:String,  // 1=>sellora affiliate program, 2=> sellora associate program
+        type:String,  
        
     },
     photo_close:{
-        type:String,  // 1=>sellora affiliate program, 2=> sellora associate program
+        type:String,  
        
     }
+
+  
 
     
 
