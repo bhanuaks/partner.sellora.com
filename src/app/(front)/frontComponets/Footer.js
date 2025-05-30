@@ -22,7 +22,7 @@ function Footer() {
           <div className="row align-items-center">
             <div className="col-lg-4">
               <div className="footer_logo">
-                <img src={`${baseUrl}front/images/affiliate_program_logo.png`} />
+                <img src={`${baseUrl}front/images/affiliate_program_footer_logo.png`} />
               </div>
             </div>
             <div className="col-lg-4">

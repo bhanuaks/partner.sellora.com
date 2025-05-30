@@ -507,7 +507,7 @@ function MyProfileFromSection() {
               style={{ float: 'left', width: '70%', marginRight: '-5px' }}
             />
             <button
-              className="browse btn-primary"
+              className="browse btn-primary bg_orange"
               type="button"
               onClick={handleButtonClick}
               style={{ float: 'left', width: '30%', height: '40px' }}
@@ -663,7 +663,7 @@ function MyProfileFromSection() {
               style={{ float: 'left', width: '70%', marginRight: '-5px' }}
             />
             <button
-              className="browse btn-primary"
+              className="browse btn-primary bg_orange"
               type="button"
               onClick={handleButtonClickClose}
               style={{ float: 'left', width: '30%', height: '40px' }}
@@ -708,13 +708,13 @@ function MyProfileFromSection() {
                   
                   <div className="blue_button">
                     <ul>
-                      <li><button className='profile_button'  type="submit">Update</button></li>
+                      <li><button   type="submit">Update</button></li>
                       <li>
                         {globalUser.user?.program == 1 && 
-                        <Link href="/affiliate/dashboard">Cancel</Link>
+                        <Link href="/affiliate/dashboard" className='cancel'>Cancel</Link>
                         }
                         {globalUser.user?.program == 2 && 
-                        <Link href="/associate/profit-summary">Cancel</Link>
+                        <Link href="/associate/profit-summary" className='cancel'>Cancel</Link>
                         }
                         </li>
                     </ul>

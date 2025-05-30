@@ -37,10 +37,10 @@ const FileUpload = ({heading}) => {
               style={{ float: 'left', width: '70%', marginRight: '-5px' }}
             />
             <button
-              className="browse btn-primary"
+              className="browse btn-primary bg_orange"
               type="button"
               onClick={handleButtonClick}
-              style={{ float: 'left', width: '30%', height: '50px' }}
+              style={{ float: 'left', width: '30%', height: '40px' }}
             >
               Upload
             </button>

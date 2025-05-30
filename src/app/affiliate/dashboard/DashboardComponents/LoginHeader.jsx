@@ -64,7 +64,7 @@ useEffect(()=>{
   
   
   return (
-    <div className="rts-header-one-area-one career-header light-bg">
+    <div className="rts-header-one-area-one career-header">
   <div className="rts-header-nav-area-one header--sticky careerheader-sticky">
     <div className="container-fluid">
       <div className="row">
@@ -75,7 +75,7 @@ useEffect(()=>{
               <Link href="/dashboard" className="logo-area">
                 {" "}
                 <img
-                  src={`${baseUrl}front/images/affiliate_logo.jpg`}
+                  src={`${baseUrl}front/images/affiliate_logo.png`}
                   alt="logo-main"
                   className="seller-page-logo"
                 />{" "}
@@ -137,7 +137,7 @@ useEffect(()=>{
             <a href="index.html" className="logo-area">
               {" "}
               <img
-                src={`${baseUrl}front/images/affiliate_logo.jpg`}
+                src={`${baseUrl}front/images/affiliate_logo.png`}
                 alt="logo-main"
                 className="seller-page-logo"
               />{" "}

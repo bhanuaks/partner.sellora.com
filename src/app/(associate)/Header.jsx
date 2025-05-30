@@ -3,7 +3,7 @@ import React from 'react'
 
 function Header() {
   return (
-    <div className="rts-header-one-area-one career-header light-bg">
+    <div className="rts-header-one-area-one career-header "> 
   <div className="rts-header-nav-area-one header--sticky careerheader-sticky">
     <div className="container-fluid">
       <div className="row">
@@ -13,7 +13,7 @@ function Header() {
               <a href="#" className="logo-area">
                 {" "}
                 <img
-                  src={`${baseUrl}front/images/affiliate_logo.jpg`} 
+                  src={`${baseUrl}front/images/affiliate_logo.png`} 
                   alt="logo-main"
                   className="seller-page-logo"
                 />{" "}
@@ -104,12 +104,12 @@ function Header() {
           </div>
         </div>
         <div className="col-lg-12">
-          <div className="logo-search-category-wrapper after-md-device-header header-mid-five-call light-bg">
+          <div className="logo-search-category-wrapper after-md-device-header header-mid-five-call ">
             {" "}
             <a href="/" className="logo-area">
               {" "}
               <img
-                src={`${baseUrl}front/images/affiliate_logo.jpg`}
+                src={`${baseUrl}front/images/affiliate_logo.png`}
                 alt="logo-main"
                 className="seller-page-logo"
               />{" "}

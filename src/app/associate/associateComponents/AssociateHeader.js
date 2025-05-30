@@ -74,7 +74,7 @@ useEffect(()=>{
           <div className="col-lg-12">
             <div className="nav-and-btn-wrapper">
               <div className="nav-area-bottom-left-header-four career-head"> <a href="#" className="logo-area">
-                 <img src={`${baseUrl}front/images/affiliate_logo.jpg`} alt="logo-main" className="seller-page-logo" /> </a> </div>
+                 <img src={`${baseUrl}front/images/affiliate_logo.png`} alt="logo-main" className="seller-page-logo" /> </a> </div>
            
               <div className="right-btn-area right-btn-area2 header-five">
                 <div className="dropdown22">
@@ -106,7 +106,7 @@ useEffect(()=>{
           <div className="col-lg-12">
             <div className="logo-search-category-wrapper after-md-device-header header-mid-five-call"> <a href="index.html"
                 className="logo-area">
-                 <img src={`${baseUrl}front/images/affiliate_logo.jpg`} alt="logo-main" className="seller-page-logo" /> </a>
+                 <img src={`${baseUrl}front/images/affiliate_logo.png`} alt="logo-main" className="seller-page-logo" /> </a>
               <div className="main-wrapper-action-2 d-flex">
                 <div className="dropdown_login pt--10">
                   <li className="seller-login-profile">Ayesha Ali &nbsp; &nbsp;<i className='fa fa-user user_bg text-white'></i>

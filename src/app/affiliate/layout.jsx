@@ -1,10 +1,12 @@
 // import Footer from "./frontComponets/Footer";
 // import HeaderFirst from "./frontComponets/HeaderFirst";
 // import HeaderSecond from "./frontComponets/HeaderSecond";
+import '../../../public/front/assets/css/plugins.css'
+
 import '../../../public/front/assets/css/style.css'
 // import '../../../public/front/assets/css/bootstrap.min.css'
 import '../../../public/front/assets/css/charts.min.css'
-import '../../../public/front/assets/css/plugins.css'
+// import '../../../public/front/assets/css/plugins.css'
 import { baseUrl } from "@/Http/helper";
 import Script from "next/script";
 import LoginHeader from './dashboard/DashboardComponents/LoginHeader';
@@ -34,7 +36,7 @@ export const generateMetadata = () => {
       siteName: 'sellora.com',
       images: [
         {
-          url: `${baseUrl}front/image/affiliate_logo.jpg`,
+          url: `${baseUrl}front/image/affiliate_logo.png`,
           width: 1200,
           height: 630,
           alt: 'sellora',
@@ -46,7 +48,7 @@ export const generateMetadata = () => {
       card: 'summary_large_image',
       title: 'sellora.com',
       description: 'Description',
-      images: [`${baseUrl}front/image/affiliate_logo.jpg`],
+      images: [`${baseUrl}front/image/affiliate_logo.png`],
     },
   };
 };

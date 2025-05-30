@@ -30,7 +30,7 @@ export const generateMetadata = () => {
       siteName: 'sellora.com',
       images: [
         {
-          url: `${baseUrl}front/image/affiliate_logo.jpg`,
+          url: `${baseUrl}front/image/affiliate_logo.png`,
           width: 1200,
           height: 630,
           alt: 'sellora',
@@ -42,7 +42,7 @@ export const generateMetadata = () => {
       card: 'summary_large_image',
       title: 'sellora.com',
       description: 'Description',
-      images: [`${baseUrl}front/image/affiliate_logo.jpg`],
+      images: [`${baseUrl}front/image/affiliate_logo.png`],
     },
   };
 };
