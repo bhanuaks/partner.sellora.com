@@ -72,7 +72,7 @@ useEffect(()=>{
           <div className="nav-and-btn-wrapper">
             <div className="nav-area-bottom-left-header-four career-head">
               {" "}
-              <Link href="/dashboard" className="logo-area">
+              <Link href="/affiliate/dashboard" className="logo-area">
                 {" "}
                 <img
                   src={`${baseUrl}front/images/affiliate_logo.png`}
