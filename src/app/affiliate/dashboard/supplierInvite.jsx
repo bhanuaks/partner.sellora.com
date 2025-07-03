@@ -1,13 +1,13 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react'
 import $ from 'jquery';
-window.$ = $;
-window.jQuery = $;
+// window.$ = $;
+// window.jQuery = $;
 
 import 'intl-tel-input/build/css/intlTelInput.css';
 import intlTelInput from 'intl-tel-input';
-import 'parsleyjs';
-import 'parsleyjs/src/parsley.css';
+// import 'parsleyjs';
+// import 'parsleyjs/src/parsley.css';
 
 const SupplierInvite = React.memo(() => {
 
@@ -84,11 +84,11 @@ const SupplierInvite = React.memo(() => {
 
 
     // parsley validation
-     useEffect(() => {
-        if (formRef.current) {
-        window.$(formRef.current).parsley();
-        }
-    }, []);
+    //  useEffect(() => {
+    //     if (formRef.current) {
+    //     window.$(formRef.current).parsley();
+    //     }
+    // }, []);
 
     // const hendle submit
     function handleSubmit(e){

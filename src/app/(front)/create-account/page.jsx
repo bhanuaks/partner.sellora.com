@@ -1,21 +1,23 @@
 "use client"
 import { baseUrl } from '@/Http/helper'
 import Link from 'next/link'
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import $ from 'jquery'
 import '../../../../public/front/loader.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'intl-tel-input/build/css/intlTelInput.css';
 import intlTelInput from 'intl-tel-input';
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 
 
-function page() {
+function CreateAccount() {
 
-      const [showPassword, setShowPassword] = useState(false)
-      const [showConfirmPassword, setConfirmShowPassword] = useState(false)
-      const router = useRouter();
+    const searchParams = useSearchParams(); 
+    const reg = searchParams.get("reg") || null;
+    const [showPassword, setShowPassword] = useState(false)
+    const [showConfirmPassword, setConfirmShowPassword] = useState(false)
+    const router = useRouter();
     const phoneInputRef = useRef(null);   
     const [sendOtp, setSendOtp] = useState(0)
     const [errors, setErrors] = useState({})
@@ -29,7 +31,7 @@ function page() {
       email:'',
       password:'',
       confirm_password:'',
-      program:'',
+      program:reg == "Associate" ? 2 : 1 ,
       country:'',
       mobile_code:'1',
       country_s_name:'us', 
@@ -91,8 +93,7 @@ function page() {
 
     const saveAffiliateUser = (e) => {
 
-      setErrors({})
-        //console.log('plllllllllllll',userData)
+      setErrors({}) 
         e.preventDefault();
         $('.loaderouter').css('display','flex')  
         fetch(`${baseUrl}api/aff-registration`,{
@@ -335,6 +336,14 @@ function page() {
     </div>
   </div>
   
+  )
+}
+
+function page(){
+  return (
+    <Suspense fallback={<></>}>
+       <CreateAccount />
+    </Suspense>
   )
 }
 

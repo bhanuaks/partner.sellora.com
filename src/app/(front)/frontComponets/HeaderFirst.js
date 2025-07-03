@@ -45,7 +45,7 @@ function HeaderFirst() {
               <ul className="affiliate_program">
                 <li>
                   <Link href="/create-account">
-                    Register for Promgram
+                    Register for Program
                   </Link>
                 </li>
                 {" "}
@@ -75,7 +75,7 @@ function HeaderFirst() {
             </a>
             <div className="main-wrapper-action-2 d-flex">
               <div className="accont-wishlist-cart-area-header">
-                <div className="after_login_seller">Register for Promgram</div>
+                <div className="after_login_seller">Register for Program</div>
               </div>
               <div className="actions-area">
                 <div className="menu-btn" id="menu-btn">

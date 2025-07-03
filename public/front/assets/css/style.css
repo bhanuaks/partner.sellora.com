@@ -6921,7 +6921,7 @@ a {
   text-decoration: none;
   outline: none;
 }
-a:hover, a:focus, a:active {
+a:hover{
   text-decoration: none;
   outline: none;
   color: #ff6e35;

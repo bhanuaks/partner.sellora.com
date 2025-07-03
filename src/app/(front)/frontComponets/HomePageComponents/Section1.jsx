@@ -16,9 +16,9 @@ function Section1() {
             <p>Offer your professional services to 2M+ sellers with
               us. Grow your reach today!</p>
           </div>
-          <div className="register"><Link href="#">Register for Affiliate Program →</Link></div>
+          <div className="register"><Link href={`/create-account?reg=Affiliate`}>Register for Affiliate Program →</Link></div>
           {" "}
-          <div className="register"><Link href="#">Register for Associate Program →</Link></div>
+          <div className="register"><Link href={`/create-account?reg=Associate`}>Register for Associate Program →</Link></div>
         </div>
         <div className="col-lg-8"> </div>
       </div>
