@@ -22,33 +22,18 @@ export async function POST(request) {
 
 
     } = await request.json();
-    
-    //const id = data.get('id') && data.get('id') !== 'undefined' ? data.get('id') : undefined;
-    
-    
-    //console.log('mmmmmmmmmmmmmmmmmmmm', web_type, agree)
-    
+     
 
-         const errors = {};
-         
+         const errors = {}; 
 
-        
-        // console.log('mmmmm', webType, agree)
-
-        if(id){
-
-        
-        
-        
+        if(id){ 
             const user = await AssociateAccStoreModel.findById(id);
             if (!user) {
               return new Response(
                 JSON.stringify({ success: false, message: 'Store not found' }),
                 { status: 404 }
               );
-            }
-
-            
+            } 
       
             // Update category
             user.finish = 1;
@@ -59,27 +44,13 @@ export async function POST(request) {
               JSON.stringify({ success: true, message: 'Store updated successfully' }),
               { status: 200 }
             );
-        } else {
-            
-                        
-                        
-                        return new Response(
-                          JSON.stringify({ success: false, message: '' }),
-                          { status: 200 }
-                        );
-                        
-
-
+        } else { 
+            return new Response(
+              JSON.stringify({ success: false, message: '' }),
+              { status: 200 }
+            ); 
         }
-         
-                
-            
-             
-             
-
-             
-             
-        
+          
     }catch(error){
         console.log(error);
         return responseFun(false, {error}, 200);

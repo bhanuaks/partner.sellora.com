@@ -19,10 +19,11 @@ export async function POST(request) {
     }
 
     try{
-        const user = await AffiliateUserModal.findOne({email:username}).select('password email mobile program')
+        const user = await AffiliateUserModal.findOne({email:username}).select('+password').select('email mobile program')
 
-        const userPass = await AffiliateUserModal.findOne({email:username}).select('_id, first_name, last_name, email mobile program')
+        const userPass = await AffiliateUserModal.findOne({email:username}); //.select('_id, first_name, last_name, email mobile program')
        
+        
         if(!user){
                 errors.username = "invalid email"
                 return responseFun(false,{errors, status_code:403},200)
@@ -34,7 +35,8 @@ export async function POST(request) {
             return responseFun(false,{errors, status_code:403},200)
         }
         if(user.program != program){
-            errors.program = "Program is incorrect"
+            // errors.program = "Program is incorrect"
+             errors.username = "Invalid unsername."
             return responseFun(false,{errors, status_code:403},200)
         }
 

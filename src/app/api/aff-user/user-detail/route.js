@@ -1,8 +1,10 @@
 import { responseFun } from "@/Http/helper"
 import { AffiliateUserModal } from "@/Http/Models/affiliate/affiliateUserModel"
 import mongoose from "mongoose"
+import { connectDb } from "../../../../../lib/dbConnect"
 
 export async function GET(request) {
+    await connectDb()
     const { searchParams } = new URL(request.url)
     const userId = searchParams.get('user_id')
     const withData = searchParams.get('withData')
@@ -21,6 +23,7 @@ export async function GET(request) {
                     }
 
     }catch(error){
-        return responseFun(false, {error}, 401)
+        console.log(error);
+        return responseFun(false, {message:error.message}, 401)
     }
  }

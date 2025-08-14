@@ -72,6 +72,10 @@ const sellerSchema = new Schema({
         type:Date, 
     },
 
+    affiliateId:{
+            type:mongoose.Types.ObjectId,
+            ref:"affiliate_user", 
+        },
 
 
 },{timestamps:true})

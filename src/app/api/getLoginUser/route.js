@@ -2,9 +2,9 @@ import { decodeJwt } from "@/Http/helper";
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
 
-export function getLoginUser() {  
+export async function getLoginUser() {  
     try {
-        const cookieStore = cookies();
+        const cookieStore = await cookies();
         const userToken = cookieStore.get("affiliateUserAuthToken")?.value; 
         if (!userToken) {
             return null;  

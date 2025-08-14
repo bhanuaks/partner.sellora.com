@@ -38290,4 +38290,23 @@ background: #f9f9f9;
 }
 
 
-    
+.success_message {
+    color: #098309;
+    font-size: 16px;
+}
+
+
+.text-center .share-copy-icon{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-decoration: none;
+}
+.text-center .share-copy-icon a{ 
+  text-decoration: none;
+  color: #ff6e35;
+}
+
+.text-center .share-copy-icon a:hover{  
+  color: rgb(171 82 47);
+}

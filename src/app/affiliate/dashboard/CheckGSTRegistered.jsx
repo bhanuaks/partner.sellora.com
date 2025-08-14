@@ -5,7 +5,8 @@ function CheckGSTRegistered() {
 
       const formRef = useRef(null); 
       const [isLoading, setIsLoading] = useState(false);
-      const [errors, setErrors] = useState({});
+      const [success, setSuccess] = useState(""); 
+      const [errors, setErrors] = useState("");
      const [formData, setFormData] = useState({
             gstin_no:"", 
             email:"", 
@@ -23,7 +24,8 @@ function CheckGSTRegistered() {
     function handleSubmit(e){
         e.preventDefault();
         setIsLoading(true) 
-        setErrors({}) 
+        setErrors("");
+        setSuccess(""); 
 
         fetch('/api/affiliate/check-gstin-register',{
             method:"POST",
@@ -37,9 +39,9 @@ function CheckGSTRegistered() {
         }).then((res)=>{
              setIsLoading(false)
              if(res.status){
-
-             }else if(res.data.status_code == 400){
-                setErrors(res.data.errors)
+              setSuccess(res.data.message);
+             }else {
+                setErrors(res.data.message);
              }
         })
 
@@ -72,8 +74,11 @@ function CheckGSTRegistered() {
               </div>
 
                <div className="registration_form_single-input">
-                {errors.error && ( 
-                    <div className='error_message' style={{width:'100%'}}>{errors.error}</div>
+                {errors && ( 
+                    <div className='error_message' style={{width:'100%'}}>{errors}</div>
+                )} 
+                {success && ( 
+                    <div className='success_message' style={{width:'100%'}}>{success}</div>
                 )} 
               </div>
                 

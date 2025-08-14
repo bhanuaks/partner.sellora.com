@@ -392,3 +392,63 @@ export function getBasePrice(amountIncludingGST, tax){
   }
   return result;
 }
+
+
+
+
+  export const isToday = (d) => {
+      const now = new Date();
+      const todayStr = now.toISOString().split("T")[0];
+      return ( d.toISOString().split("T")[0] === todayStr )
+  }
+ 
+  
+  export function checkDiscountApplyTime(startDateParam, closeDateParam, startTimeParam, closeTimeParam){
+      const now = new Date();
+if(!startDateParam || !closeDateParam || !startTimeParam || !closeTimeParam){
+  return false
+}
+  // Strip time part from current date
+  const todayStr = now.toISOString().split("T")[0];
+  const today = new Date(todayStr);
+ 
+    const startDate = new Date(startDateParam);
+    const closeDate = new Date(closeDateParam);
+    // get current time in minuts
+    const currentTimeMinutes = now.getHours() * 60 + now.getMinutes();
+
+    const [startHour, startMinute] = startTimeParam.split(":").map(Number);
+    const [closeHour, closeMinute] = closeTimeParam.split(":").map(Number);
+
+    const startTimeMinutes = startHour * 60 + startMinute;
+    const closeTimeMinutes = closeHour * 60 + closeMinute;
+
+      if (startDate <= today && closeDate >= today) {
+            let applyDiscount = false; 
+            if(isToday(startDate) && isToday(closeDate)) {
+                      // Single-day event
+                  if (currentTimeMinutes >= startTimeMinutes && currentTimeMinutes <= closeTimeMinutes) {
+                        applyDiscount = true;
+                      }
+              } else if (isToday(startDate)) {
+                      // First day of the event
+                      if (currentTimeMinutes >= startTimeMinutes) {
+                        applyDiscount = true;
+                      }
+              } else if (isToday(closeDate)) {
+                      // Last day of the event
+                      if (currentTimeMinutes <= closeTimeMinutes) {
+                        applyDiscount = true;
+                      }
+              } else {
+                      // Any full day in between
+                      applyDiscount = true;
+                }
+
+           return applyDiscount;
+          }else{
+            return false;
+          }
+ 
+
+  }

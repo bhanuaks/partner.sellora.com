@@ -6,6 +6,7 @@ import $ from 'jquery';
 
 import 'intl-tel-input/build/css/intlTelInput.css';
 import intlTelInput from 'intl-tel-input';
+import Swal from 'sweetalert2';
 // import 'parsleyjs';
 // import 'parsleyjs/src/parsley.css';
 
@@ -18,8 +19,7 @@ const SupplierInvite = React.memo(() => {
     const [inviteData, setInviteData] = useState({
         name:"",
         mobile:"",
-        email:"",
-
+        email:"", 
         country_s_name:"us",
         mobile_code:"1"
     });
@@ -108,7 +108,18 @@ const SupplierInvite = React.memo(() => {
         }).then((res)=>{
              setIsLoading(false)
              if(res.status){
-
+              Swal.fire({
+                text:"Your invitation has been successfully.",
+                icon:"success",
+                title:"Success"
+              })
+              setInviteData({
+                name:"",
+                mobile:"",
+                email:"", 
+                country_s_name:"us",
+                mobile_code:"1"
+            })
              }else if(res.data.status_code == 400){
                 setErrors(res.data.errors)
              }
@@ -123,7 +134,7 @@ const SupplierInvite = React.memo(() => {
               <h3>Invite supplier to Sellora</h3>
               <div className="registration_form_single-input">
                 <input type="text" 
-                placeholder="First Name" 
+                placeholder="Name" 
                 name='name'
                 value={inviteData?.name || ""}
                 onChange={(e)=>hendleInput(e)} 

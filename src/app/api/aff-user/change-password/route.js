@@ -34,8 +34,8 @@ export async function POST(request) {
 
 
     try{
-    const user = await AffiliateUserModal.findById(user_id)
-    
+    const user = await AffiliateUserModal.findById(user_id).select("+password")
+     
     const matchPassword = bcrypt.compareSync(old_password, user.password)
     if(!matchPassword){
         errors.old_password = "Old password dit not match"

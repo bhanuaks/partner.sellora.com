@@ -13,7 +13,7 @@ import Footer from './Footer';
 
 export const generateMetadata = () => {
   return {
-    title: 'Sellora.com',
+    title: 'Partner | Sellora.com',
     description:
       'Description',
     // viewport: 'width=device-width, initial-scale=1',
